@@ -145,6 +145,8 @@
 
 					var team = teams[i];
 
+					var teamIcons = Storage.teamIcons(team.team);
+
 					if (team && !team.team) {
 						team = null;
 					}
@@ -169,7 +171,14 @@
 						formatText = '['+team.format+'] ';
 					}
 
-					buf += '<li><button name="edit" value="'+i+'" style="width:400px;vertical-align:middle">'+formatText+'<strong>'+Tools.escapeHTML(team.name)+'</strong><br /><small>';
+					buf += '<li><button name="edit" value="'+i+'" style="width:400px;vertical-align:middle">'+formatText+'<strong>'+Tools.escapeHTML(team.name)+'</strong><br />';
+
+					for (var j=0; j<teamIcons.length; j++) {
+						buf += '<div class="monIcon" style="' + teamIcons[j] + ';margin-top:8px;height:32px;width:32px;display:inline-block"></div>';
+					}
+
+					buf += '<br /><small>'
+
 					for (var j=0; j<team.team.length; j++) {
 						if (j!=0) buf += ' / ';
 						buf += ''+Tools.escapeHTML(team.team[j].name);

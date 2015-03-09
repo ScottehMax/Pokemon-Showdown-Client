@@ -61,6 +61,18 @@ _Storage.prototype.saveAllTeams = function() {
 	this.saveTeams();
 };
 
+_Storage.prototype.teamIcons = function(team) {
+	if (!team) return '';
+
+	var result = [];
+
+	for (var i=0; i<team.length; i++) {
+		result.push(Tools.getIcon(team[i]));
+	}
+
+	return result;
+}
+
 _Storage.prototype.packTeam = function(team) {
 	var buf = '';
 	if (!team) return '';
